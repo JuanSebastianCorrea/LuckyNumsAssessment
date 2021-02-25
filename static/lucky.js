@@ -20,6 +20,7 @@ function processForm(evt) {
 /** handleResponse: deal with response from our lucky-num API. */
 
 function handleResponse(resp) {
+	$('#lucky-results').children().remove();
 	if (resp.errors) {
 		$('b').text('');
 		for (err in resp.errors) {
@@ -27,6 +28,7 @@ function handleResponse(resp) {
 		}
 	} else {
 		$('b').text('');
+		$('input').val('');
 		htmlMarkup = $(`<p> Your lucky number is ${resp.num.num}. ${resp.num.fact}</p>
                     <p> Your birth year (${resp.year.year}) fact is: ${resp.year.fact}</p>`);
 		$('#lucky-results').append(htmlMarkup);
