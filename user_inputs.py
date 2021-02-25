@@ -35,14 +35,18 @@ class UserInputs:
     def validate_year(self):
         if self.year == "":
             return "This field is required"
-        try:  
-            if (int(self.year) >= 1900 and int(self.year) <= 2000) == False:
+        try:
+            int_val = int(self.year)  
+            if (int_val >= 1900 and int_val <= 2000 )== False:
                 return "Invalid value, must be a number between 1900 and 2000 (inclusive)"
             # elif (self.year)) != int:
             #     return "Invalid value, must be a number"
             else:
                 return True
         except:
+            return "Invalid value, must be a number"
+
+        if self.year != "" and (int(self.year) >= 1900 and int(self.year) <= 2000 ) == True:
             return True
         
         
