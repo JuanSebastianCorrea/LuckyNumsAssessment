@@ -21,10 +21,12 @@ function processForm(evt) {
 
 function handleResponse(resp) {
 	if (resp.errors) {
+		$('b').text('');
 		for (err in resp.errors) {
-			$(`#${err}-err`).html(resp.errors[err]);
+			$(`#${err}-err`).text(resp.errors[err]);
 		}
 	} else {
+		$('b').text('');
 		htmlMarkup = $(`<p> Your lucky number is ${resp.num.num}. ${resp.num.fact}</p>
                     <p> Your birth year (${resp.year.year}) fact is: ${resp.year.fact}</p>`);
 		$('#lucky-results').append(htmlMarkup);
